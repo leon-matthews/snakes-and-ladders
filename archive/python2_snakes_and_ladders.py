@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 
 """
-Silly benchmark which plays many, many solo games of snakes and ladders.
+Stripped down version of Snakes & Ladders game with maximal compatibility.
 
-Runs on Python 3.7 and up.
-
-Copyright 2011-2024 Leon Matthews. Released under the GPL v3 license.
+Copyright 2011-2024 Leon Matthews. Released under the Apache 2.0 licence.
 """
 
-from pprint import pprint as pp
 import random
-import sys
 import time
+
+
+# Run on Python3 (without any dependencies)
+try:
+    xrange
+except NameError:
+    xrange = range
 
 
 SNAKES_AND_LADDERS = {
@@ -96,4 +99,5 @@ if __name__ == '__main__':
     start = time.time()
     for _ in xrange(num_games):
         game = snakes_and_ladders()
-    print("Played {:,} games in {:.3f} seconds".format(num_games, time.time() - start))
+    print("Played {:,} games in {:.3f} seconds".format(
+            num_games, time.time() - start))

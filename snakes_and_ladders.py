@@ -5,7 +5,7 @@ Silly benchmark which plays many, many solo games of snakes and ladders.
 
 Runs on Python 3.7 and up.
 
-Copyright 2011-2024 Leon Matthews. Released under the GPL v3 license.
+Copyright 2011-2024 Leon Matthews. Released under the Apache 2.0 licence.
 """
 
 from __future__ import annotations
