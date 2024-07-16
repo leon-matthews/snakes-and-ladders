@@ -1,0 +1,8 @@
+
+*.geany
+debug/
+target/
+Cargo.lock
+
+# For rustfmt
+**/*.rs.bk
