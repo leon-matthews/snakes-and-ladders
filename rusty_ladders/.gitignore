@@ -1,6 +1,7 @@
 
 *.geany
 debug/
+perf.data*
 target/
 Cargo.lock
 
