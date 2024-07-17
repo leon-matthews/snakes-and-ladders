@@ -1,26 +1,31 @@
 
-use fastrand;
-//~ use rand::Rng;
+//~ use fastrand;
+use rand::prelude::*;
+
 
 fn main() {
     let mut num_rolls = 0;
-    for _ in 1..1_000_000 {
-        num_rolls = snakes_and_ladders();
+
+    // Use strong default RNG to seed faster non-cryptographic generator.
+    // We can then create multiple small RNGs, one per work-unit.
+    let mut thread_rng = rand::thread_rng();
+    let mut rng = SmallRng::from_rng(&mut thread_rng).unwrap();
+
+    for _ in 1..=1_000_000 {
+        num_rolls = snakes_and_ladders(&mut rng);
     }
     println!("Finished game in {} rolls", num_rolls);
 }
 
 
-
-fn snakes_and_ladders() -> i32 {
-    //~ let mut rng = rand::thread_rng();
-
+fn snakes_and_ladders(rng: &mut SmallRng) -> i32 {
     let mut num_rolls = 0;
     let mut place = 0;
+
     loop {
         // Roll the dice
-        //~ let roll = rng.gen_range(1..=6);
-        let roll = fastrand::u8(1..=6);
+        //~ let roll = rng.gen_range(1..=6);            // 227ms for 1e6 games
+        let roll = rng.next_u32() % 6 + 1;              // 176ms for 1e6 games
         num_rolls += 1;
 
         // Where did you end up?
