@@ -25,7 +25,7 @@ fn snakes_and_ladders(rng: &mut SmallRng) -> i32 {
     loop {
         // Roll the dice
         //~ let roll = rng.gen_range(1..=6);            // 227ms for 1e6 games
-        let roll = rng.next_u32() % 6 + 1;              // 176ms for 1e6 games
+        let roll = rng.next_u64() % 6 + 1;              // 176ms for 1e6 games
         num_rolls += 1;
 
         // Where did you end up?
