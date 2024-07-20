@@ -10,6 +10,12 @@ seems like a big proportion. Would the engineering work of breaking that
 into a circulal buffer be worth it? I mean, no, it wouldn't. But it might
 be fun!
 
+Something like:
+
+    value: u64 = random()
+    lsbyte: u8 = (value & 0xff) as u8;
+    value = value >> 8;
+
 ### Crate 'rand'
 Initial measurement for 1,000,000 games                     284.1 ms ±   7.7 ms
 Pass RNG as parameter                                       213.6 ms ±   4.8 ms
