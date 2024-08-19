@@ -286,10 +286,10 @@ def snakes_and_ladders() -> Game:
         landed = place + roll
 
         if landed > 100:
-            # Too high, ignore
+            # Too high, stay where you are
             pass
         else:
-            # Special move or as rolled
+            # Special move or as rolled?
             place = SNAKES_AND_LADDERS.get(landed, landed)
 
         moves.append((roll, place))

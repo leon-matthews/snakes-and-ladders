@@ -8,9 +8,7 @@ Runs on Python 3.7 and up.
 Copyright 2011-2024 Leon Matthews. Released under the GPL v3 license.
 """
 
-from pprint import pprint as pp
 import random
-import sys
 import time
 
 
@@ -85,10 +83,10 @@ def snakes_and_ladders():
         landed = place + roll
 
         if landed > 100:
-            # Too high, ignore
+            # Too high, stay where you are
             pass
         else:
-            # Special move or as rolled
+            # Special move or as rolled?
             place = SNAKES_AND_LADDERS.get(landed, landed)
 
         moves.append((roll, place))
@@ -103,4 +101,5 @@ if __name__ == '__main__':
     start = time.time()
     for _ in range(num_games):
         game = snakes_and_ladders()
-    print("Played {0:} games in {1:.3f} seconds".format(num_games, time.time() - start))
+    print("Played {0:} games in {1:.3f} seconds".format(
+        num_games, time.time() - start))
